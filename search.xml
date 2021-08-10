@@ -3,7 +3,7 @@
   <entry>
     <title>SpringBoot系列（一）-Web入门篇</title>
     <url>/2021/08/10/SpringBoot%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%80%EF%BC%89-Web%E5%85%A5%E9%97%A8%E7%AF%87/</url>
-    <content><![CDATA[<h1 id="SpringBoot系列（一）-Web入门篇"><a href="#SpringBoot系列（一）-Web入门篇" class="headerlink" title="SpringBoot系列（一）-Web入门篇"></a>SpringBoot系列（一）-Web入门篇</h1><p>pringBoot可以轻松创建独立的，生产级的基于Spring的应用程序，SpringBoot对周边框架的精简和整合，实现自动装配！这篇主要是SpringBoot入门的HelloWorld!</p>
+    <content><![CDATA[<h1 id="SpringBoot系列（一）-Web入门篇"><a href="#SpringBoot系列（一）-Web入门篇" class="headerlink" title="SpringBoot系列（一）-Web入门篇"></a>SpringBoot系列（一）-Web入门篇</h1><p>SpringBoot可以轻松创建独立的，生产级的基于Spring的应用程序，SpringBoot对周边框架的精简和整合，实现自动装配！这篇主要是SpringBoot入门的HelloWorld!</p>
 <span id="more"></span>
 
 
