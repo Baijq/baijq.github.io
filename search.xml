@@ -61,6 +61,13 @@
 <li>思考点高深的东西，SpringBoot自动装配原理是啥？</li>
 </ul>
 ]]></content>
+      <categories>
+        <category>SpringBoot 系列</category>
+      </categories>
+      <tags>
+        <tag>SpringBoot</tag>
+        <tag>Java</tag>
+      </tags>
   </entry>
   <entry>
     <title>SpringBoot系列（二）-MyBatis数据层</title>
@@ -157,5 +164,12 @@
 </li>
 </ol>
 ]]></content>
+      <categories>
+        <category>SpringBoot 系列</category>
+      </categories>
+      <tags>
+        <tag>SpringBoot</tag>
+        <tag>Java</tag>
+      </tags>
   </entry>
 </search>
