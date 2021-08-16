@@ -14,10 +14,11 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"baijq.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"baijq.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="SpringBoot可以轻松创建独立的，生产级的基于Spring的应用程序，SpringBoot对周边框架的精简和整合，实现自动装配！这篇主要是SpringBoot入门的HelloWorld!">
@@ -280,26 +281,26 @@
 
 <h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><p>此系列我打算使用一个父级项目springboot-demo，然后下面建立各个子项目的方式来创建项目。</p>
 <p>IDAE：file -&gt; new -&gt; project</p>
-<p><img src="https://z3.ax1x.com/2021/08/10/fJ0QRs.md.png" alt="fJ0QRs.md.png"></p>
+<p><img data-src="https://z3.ax1x.com/2021/08/10/fJ0QRs.md.png" alt="fJ0QRs.md.png"></p>
 <p>选择项目名称，项目路径，等等</p>
-<p><img src="https://z3.ax1x.com/2021/08/10/fJ0lzn.md.jpg" alt="fJ0lzn.md.jpg"></p>
+<p><img data-src="https://z3.ax1x.com/2021/08/10/fJ0lzn.md.jpg" alt="fJ0lzn.md.jpg"></p>
 <p>选择版本号，选择Web环境的依赖</p>
-<p><img src="https://z3.ax1x.com/2021/08/10/fJDsUO.png" alt="fJDsUO.png"></p>
+<p><img data-src="https://z3.ax1x.com/2021/08/10/fJDsUO.png" alt="fJDsUO.png"></p>
 <p>项目结构如图，删除没用的文件，因为本项目是父项目，所以src也删了，改一下父pom.xml文件</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0&quot;</span> <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--项目坐标--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.biubiu<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springboot-demo<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--SpringBoot父依赖--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.5.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">relativePath</span>/&gt;</span> <span class="comment">&lt;!-- lookup parent from repository --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--属性设置--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">java.version</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">java.version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--这个Web依赖也删掉，在各自的子模块引入--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">        &lt;dependency&gt;</span></span><br><span class="line"><span class="comment">            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span></span><br><span class="line"><span class="comment">            &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;</span></span><br><span class="line"><span class="comment">        &lt;/dependency&gt;</span></span><br><span class="line"><span class="comment">        --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--maven打包插件也删掉，在各自的子模块引入--&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">    &lt;build&gt;</span></span><br><span class="line"><span class="comment">        &lt;plugins&gt;</span></span><br><span class="line"><span class="comment">            &lt;plugin&gt;</span></span><br><span class="line"><span class="comment">                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span></span><br><span class="line"><span class="comment">                &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</span></span><br><span class="line"><span class="comment">            &lt;/plugin&gt;</span></span><br><span class="line"><span class="comment">        &lt;/plugins&gt;</span></span><br><span class="line"><span class="comment">    &lt;/build&gt;</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>好，继续子项目创建，右键项目，new -&gt; module 这里选择Maven项目就行</p>
-<p><img src="https://z3.ax1x.com/2021/08/10/fJ6MJU.md.png" alt="fJ6MJU.md.png"></p>
-<p><img src="https://z3.ax1x.com/2021/08/10/fJ6QWF.md.png" alt="fJ6QWF.md.png"></p>
-<p><img src="https://z3.ax1x.com/2021/08/10/fJ6KiT.md.png" alt="fJ6KiT.md.png"></p>
+<p><img data-src="https://z3.ax1x.com/2021/08/10/fJ6MJU.md.png" alt="fJ6MJU.md.png"></p>
+<p><img data-src="https://z3.ax1x.com/2021/08/10/fJ6QWF.md.png" alt="fJ6QWF.md.png"></p>
+<p><img data-src="https://z3.ax1x.com/2021/08/10/fJ6KiT.md.png" alt="fJ6KiT.md.png"></p>
 <p>创建完成后，再看看项目结构</p>
-<p><img src="https://z3.ax1x.com/2021/08/10/fYCCkR.md.png" alt="fYCCkR.md.png"></p>
+<p><img data-src="https://z3.ax1x.com/2021/08/10/fYCCkR.md.png" alt="fYCCkR.md.png"></p>
 <p>可以看到父级pom.xml下多了module模块，这个表示子模块的意思</p>
 <p>这里我们把项目搭建完毕了，我们改下子模块springboot-web-demo的pom.xml如下</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springboot-demo<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.biubiu<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springboot-web-demo<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">maven.compiler.source</span>&gt;</span>8<span class="tag">&lt;/<span class="name">maven.compiler.source</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">maven.compiler.target</span>&gt;</span>8<span class="tag">&lt;/<span class="name">maven.compiler.target</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--maven打包插件--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="编写代码"><a href="#编写代码" class="headerlink" title="编写代码"></a>编写代码</h2><ol>
-<li>项目结构<br><img src="https://z3.ax1x.com/2021/08/10/fYFEcV.png" alt="fYFEcV.png"></li>
+<li>项目结构<br><img data-src="https://z3.ax1x.com/2021/08/10/fYFEcV.png" alt="fYFEcV.png"></li>
 </ol>
 <p>注意，application.properties是空的，可以不加</p>
 <ol start="2">
@@ -311,7 +312,7 @@
 <ol start="4">
 <li><p>启动项目：日志如下说明成功</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">  .   ____          _            __ _ _</span><br><span class="line"> /\\ / ___<span class="string">&#x27;_ __ _ _(_)_ __  __ _ \ \ \ \</span></span><br><span class="line"><span class="string">( ( )\___ | &#x27;</span>_ | <span class="string">&#x27;_| | &#x27;</span>_ \/ _` | \ \ \ \</span><br><span class="line"> \\/  ___)| |_)| | | | | || (_| |  ) ) ) )</span><br><span class="line">  <span class="string">&#x27;  |____| .__|_| |_|_| |_\__, | / / / /</span></span><br><span class="line"><span class="string"> =========|_|==============|___/=/_/_/_/</span></span><br><span class="line"><span class="string"> :: Spring Boot ::                (v2.5.3)</span></span><br><span class="line"><span class="string">......</span></span><br><span class="line"><span class="string">......</span></span><br><span class="line"><span class="string">2021-08-10 15:42:37.586  INFO 9444 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1160 ms</span></span><br><span class="line"><span class="string">2021-08-10 15:42:38.037  INFO 9444 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path &#x27;</span><span class="string">&#x27;</span></span><br><span class="line"><span class="string">2021-08-10 15:42:38.051  INFO 9444 --- [           main] com.biubiu.web.WebApplication            : Started WebApplication in 2.3 seconds (JVM running for 3.947)</span></span><br></pre></td></tr></table></figure></li>
-<li><p>浏览器输入 <a target="_blank" rel="noopener" href="http://localhost:8080/hello%E6%B5%8B%E8%AF%95">http://localhost:8080/hello测试</a><br><img src="https://z3.ax1x.com/2021/08/10/fYFA10.png" alt="fYFA10.png"></p>
+<li><p>浏览器输入 <a target="_blank" rel="noopener" href="http://localhost:8080/hello%E6%B5%8B%E8%AF%95">http://localhost:8080/hello测试</a><br><img data-src="https://z3.ax1x.com/2021/08/10/fYFA10.png" alt="fYFA10.png"></p>
 </li>
 </ol>
 <h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul>
@@ -325,7 +326,7 @@
     
     
         <div class="reward-container">
-  <div><span style="color:#409EFF">老铁，想请我喝哇哈哈嘛!![笑哭]</span></div>
+  <div><span style="color:#409EFF">老铁，想请我喝哇哈哈嘛!!:joy:</span></div>
   <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
     打赏
   </button>
@@ -342,6 +343,23 @@
       </div>
 
   </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>biubiu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://baijq.github.io/2021/08/10/SpringBoot%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%80%EF%BC%89-Web%E5%85%A5%E9%97%A8%E7%AF%87/" title="SpringBoot系列（一）-Web入门篇">https://baijq.github.io/2021/08/10/SpringBoot系列（一）-Web入门篇/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
 </div>
 
 
@@ -461,6 +479,9 @@
         <a href="mailto:baijqmail@163.com" title="E-Mail → mailto:baijqmail@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
       </span>
   </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
 
 
 
@@ -508,6 +529,9 @@
   
   <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
